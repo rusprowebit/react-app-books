@@ -1,0 +1,21 @@
+.list__book {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 25px;
+	margin-bottom: 10px;
+}
+.list__book-count {
+	font-size: 18px;
+	padding-right: 80px;
+}
+.list__book-close {
+	position: absolute;
+	top: 10px;
+	right: -30px;
+	font-size: 45px;
+	background-color: transparent;
+	color: rgba(248, 219, 52, 0.973);
+}
