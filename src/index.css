@@ -11,6 +11,7 @@
 * input {
 	font-size: 16px;
 	width: 50%;
+	border-radius: 6px;
 }
 
 body {
@@ -55,5 +56,8 @@ code {
 .header__button {
 	padding: 10px 35px;
 	border-radius: 20px;
-	background-color: rgba(248, 219, 52, 0.973);
+	background-color: rgba(248, 219, 52, 0.8);
+}
+.header__button:hover {
+	background-color: rgba(248, 219, 52, 1);
 }

@@ -44,8 +44,14 @@
 	background-color: rgb(197, 45, 45);
 	border-radius: 20px;
 }
+.modal__button--cancel:hover {
+	background-color: rgb(172, 23, 23);
+}
 .modal__button--add {
 	padding: 10px 25px;
-	background-color: rgba(248, 219, 52, 0.973);
+	background-color: rgba(228, 200, 40, 0.8);
 	border-radius: 20px;
+}
+.modal__button--add:hover {
+	background-color: rgba(248, 219, 52, 1);
 }

@@ -17,5 +17,8 @@
 	right: -30px;
 	font-size: 45px;
 	background-color: transparent;
-	color: rgba(248, 219, 52, 0.973);
+	color: rgba(248, 219, 52, 0.7);
+}
+.list__book-close:hover {
+	color: rgba(248, 219, 52, 1);
 }

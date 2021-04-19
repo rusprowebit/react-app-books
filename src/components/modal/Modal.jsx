@@ -1,28 +1,33 @@
-import React, { createRef } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addBookAction, hideModalAction } from '../../redux/reducers/modalReducer';
 import './modal.css';
 
-export const Modal = ({ children }) => {
+export const Modal = () => {
 	const dispatch = useDispatch();
-
-	const titleRef = createRef();
-	const countRef = createRef();
-	const ratingRef = createRef();
+	const [titleInput, setTitleInput] = useState('');
+	const [countInput, setCountInput] = useState('');
+	const [ratingInput, setRatingInput] = useState('');
 
 	function clearInputs() {
-		titleRef.current.value = '';
-		countRef.current.value = '';
-		ratingRef.current.value = '';
+		setTitleInput('');
+		setCountInput('');
+		setRatingInput('');
 	}
 	
 	const addBook = (e) => {
 		e.preventDefault();
-		if(titleRef.current.value.length < 1) {
-			alert('Заполните данные');
+		if(titleInput.length < 1) {
+			alert('Заполните название книги');
+			return
+		} else if(countInput.length < 1) {
+			alert('Заполните кол-во страниц');
+			return
+		} else if(ratingInput.length < 1) {
+			alert('Поставьте оценку');
 			return
 		}
-		dispatch(addBookAction(titleRef.current.value, countRef.current.value, ratingRef.current.value));
+		dispatch(addBookAction(titleInput, countInput, ratingInput));
 		dispatch(hideModalAction());
 		clearInputs();
 	}
@@ -32,15 +37,15 @@ export const Modal = ({ children }) => {
 				<h1>Добавление книги</h1>
 				<div className='modal__title'>
 					<span>Название</span>
-					<input ref={titleRef} type="text" placeholder='Введите название вашей книги'/>
+					<input value={titleInput} onChange={ e => setTitleInput(e.target.value) } type="text" placeholder='Введите название вашей книги'/>
 				</div>
 				<div className='modal__count'>
 					<span>Кол-во страниц</span>
-					<input ref={countRef} type="text" placeholder='Кол-во страниц'/>
+					<input value={countInput} onChange={ e => setCountInput(e.target.value) } type="text" placeholder='Кол-во страниц'/>
 				</div>
 				<div className='modal__rating'>
 					<span>Оценка</span>
-					<input ref={ratingRef} type="text" placeholder='Поставьте оценку'/>
+					<input value={ratingInput} onChange={ e => setRatingInput(e.target.value) } type="text" placeholder='Поставьте оценку'/>
 				</div>
 				<div className='modal__button'>
 					<button className='modal__button--cancel' onClick={ () => dispatch(hideModalAction()) }>Отмена</button>
