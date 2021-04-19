@@ -7,9 +7,9 @@ export const Book = ({ b }) => {
 	const dispatch = useDispatch();
 	return (
 		<div className='list__book'>
-			<span className='list__book-name'>{b.title}</span>
-			<span className='list__book-count'>{b.count}</span>
-			<span className='list__book-rating'>{b.rating}</span>
+			<div className='list__book-wrapper'><div className='list__book-name'>{b.title}</div></div>
+			<div className='list__book-wrapper'><div className='list__book-count'>{b.count}</div></div>
+			<div className='list__book-wrapper'><div className='list__book-rating'>{b.rating}</div></div>
 			<button onClick={() => dispatch(removeBookAction(b.id))} className='list__book-close'>&times;</button>
 		</div>
 	)

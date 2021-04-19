@@ -27,7 +27,7 @@ export const Modal = () => {
 			alert('Поставьте оценку');
 			return
 		}
-		dispatch(addBookAction(titleInput, countInput, ratingInput));
+		dispatch(addBookAction(titleInput.toUpperCase(), countInput, ratingInput));
 		dispatch(hideModalAction());
 		clearInputs();
 	}

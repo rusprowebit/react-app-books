@@ -1,15 +1,21 @@
 .list__book {
 	position: relative;
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
 	background-color: #fff;
 	padding: 20px;
 	border-radius: 25px;
 	margin-bottom: 10px;
 }
+.list__book-name {
+	text-align: left;
+}
 .list__book-count {
+	text-align: center;
 	font-size: 18px;
-	padding-right: 80px;
+}
+.list__book-rating {
+	text-align: right;
 }
 .list__book-close {
 	position: absolute;
@@ -21,4 +27,7 @@
 }
 .list__book-close:hover {
 	color: rgba(248, 219, 52, 1);
+}
+.list__book-wrapper {
+	width: 30%;
 }
