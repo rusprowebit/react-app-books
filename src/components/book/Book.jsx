@@ -1,7 +1,7 @@
 import React from 'react';
 import './book.css'
 import { useDispatch } from 'react-redux';
-import { removeBookAction } from '../../redux/reducers/modalReducer';
+import { removeBookAction } from '../../redux/reducers/bookReducer';
 
 export const Book = ({ b }) => {
 	const dispatch = useDispatch();

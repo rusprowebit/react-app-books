@@ -6,7 +6,7 @@ import { showModalAction } from './redux/reducers/modalReducer';
 
 const App = () => {
 	const modal = useSelector(({ modal }) => modal.visibleModal);
-	const book = useSelector(state => state.modal.book);
+	const book = useSelector(({ book }) => book.book);
 	const dispatch = useDispatch();
 
 	return (

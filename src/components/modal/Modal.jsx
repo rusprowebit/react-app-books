@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addBookAction, hideModalAction } from '../../redux/reducers/modalReducer';
+import { hideModalAction } from '../../redux/reducers/modalReducer';
+import { addBookAction } from '../../redux/reducers/bookReducer';
 import './modal.css';
 
 export const Modal = () => {
