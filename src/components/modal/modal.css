@@ -41,17 +41,22 @@
 }
 .modal__button--cancel {
 	padding: 10px 25px;
-	background-color: rgb(197, 45, 45);
+	background-color: rgba(197, 45, 45, 0.8);
 	border-radius: 20px;
+	transition: 0.2s linear;
 }
 .modal__button--cancel:hover {
-	background-color: rgb(172, 23, 23);
+	background-color: rgba(197, 45, 45, 1);
 }
 .modal__button--add {
 	padding: 10px 25px;
 	background-color: rgba(228, 200, 40, 0.8);
 	border-radius: 20px;
+	transition: 0.3s linear;
 }
 .modal__button--add:hover {
 	background-color: rgba(248, 219, 52, 1);
+}
+.input-error {
+border: 2px solid red;
 }

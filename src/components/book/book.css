@@ -7,6 +7,12 @@
 	border-radius: 25px;
 	margin-bottom: 10px;
 }
+.list__book:hover .list__book-close {
+	opacity: 1;
+}
+.list__book:hover .list__book-edit {
+	opacity: 1;
+}
 .list__book-name {
 	text-align: left;
 }
@@ -19,15 +25,28 @@
 }
 .list__book-close {
 	position: absolute;
-	top: 10px;
-	right: -30px;
-	font-size: 45px;
+	top: 50%;
+	right: -45px;
+	transform: translateY(-50%);
+	font-size: 40px;
 	background-color: transparent;
-	color: rgba(248, 219, 52, 0.7);
-}
-.list__book-close:hover {
 	color: rgba(248, 219, 52, 1);
+	opacity: 0;
+	transition: 0.2s linear;
+
 }
+.list__book-edit {
+	position: absolute;
+	top: 50%;
+	right: -18px;
+	opacity: 0;
+	transform: translateY(-50%);
+	width: 14px;
+	height: 14px;
+	transition: 0.2s linear;
+	cursor: pointer;
+}
+
 .list__book-wrapper {
 	width: 30%;
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import './book.css'
 import { useDispatch } from 'react-redux';
 import { removeBookAction } from '../../redux/reducers/bookReducer';
+import editSvg from '../../assets/icons/edit.svg';
 
 export const Book = ({ b }) => {
 	const dispatch = useDispatch();
@@ -11,6 +12,7 @@ export const Book = ({ b }) => {
 			<div className='list__book-wrapper'><div className='list__book-count'>{b.count}</div></div>
 			<div className='list__book-wrapper'><div className='list__book-rating'>{b.rating}</div></div>
 			<button onClick={() => dispatch(removeBookAction(b.id))} className='list__book-close'>&times;</button>
+			<img className='list__book-edit' src={editSvg} alt='edit'></img>
 		</div>
 	)
 }
