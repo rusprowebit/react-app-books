@@ -4,7 +4,7 @@ const HIDE_MODAL = 'HIDE_MODAL';
 
 const initialState = {
 	visibleModal: false,
-	book: []
+	editModal: true
 }
 
 export const modalReducer = (state = initialState, action) => {

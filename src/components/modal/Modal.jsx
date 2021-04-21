@@ -6,6 +6,7 @@ import './modal.css';
 
 export const Modal = () => {
 	const dispatch = useDispatch();
+
 	const [titleInput, setTitleInput] = useState('');
 	const [countInput, setCountInput] = useState('');
 	const [ratingInput, setRatingInput] = useState('');
@@ -20,8 +21,6 @@ export const Modal = () => {
 		setRatingInput('');
 	}
 
-	
-	
 	const addBook = (e) => {
 		e.preventDefault();
 		if(titleInput.trim().length < 1) {

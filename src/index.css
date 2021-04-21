@@ -49,6 +49,7 @@ code {
 }
 .header__title {
 	font-size: 40px;
+	font-weight: 600;
 }
 .list__title {
 	display: flex;

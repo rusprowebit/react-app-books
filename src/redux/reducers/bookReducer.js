@@ -2,7 +2,6 @@ const ADD_BOOK = 'ADD_MODAL';
 const REMOVE_BOOK = 'REMOVE_BOOK';
 
 const initialState = {
-	visibleModal: false,
 	book: []
 }
 
