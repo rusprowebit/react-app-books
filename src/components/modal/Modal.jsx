@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { hideModalAction } from '../../redux/reducers/modalReducer';
-import { addBookAction } from '../../redux/reducers/bookReducer';
+import { addBookAction, editBookAction } from '../../redux/reducers/bookReducer';
 import './modal.css';
 
-export const Modal = () => {
+export const Modal = ({ mode, book }) => {
 	const dispatch = useDispatch();
 
 	const [titleInput, setTitleInput] = useState('');
@@ -38,10 +38,16 @@ export const Modal = () => {
 		clearInputs();
 	}
 
+	const editBook = (e) => {
+		e.preventDefault();
+		dispatch(editBookAction(titleInput.toUpperCase(), countInput, ratingInput, book));
+		dispatch(hideModalAction());
+	}
+
 	return (
 		<div className='modal' onClick={ () => dispatch(hideModalAction()) }>
 			<form className='modal__content' onClick={ e => e.stopPropagation() }>
-				<h1>Добавление книги</h1>
+				<h1>{mode === 'add' ? 'Добавление книги' : 'Редактирование книги'}</h1>
 				<div className='modal__title'>
 					<span>Название</span>
 					<input 
@@ -77,7 +83,13 @@ export const Modal = () => {
 				</div>
 				<div className='modal__button'>
 					<button className='modal__button--cancel' onClick={ () => dispatch(hideModalAction()) }>Отмена</button>
-					<button type='submit' className='modal__button--add' onClick={(e) => addBook(e)} >Добавить</button>
+					<button 
+						type='submit' 
+						className='modal__button--add' 
+						onClick={(e) => mode === 'add' ? addBook(e) : editBook(e) } 
+					>{mode === 'add' ? 'Добавить' : 'Сохранить'}
+					</button>
+					
 				</div>
 			</form>
 		</div>

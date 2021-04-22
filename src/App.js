@@ -1,19 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Book } from './components/book/Book';
 import { Modal } from './components/modal/Modal'
 import { showModalAction } from './redux/reducers/modalReducer';
 
 const App = () => {
+	const [modalMode, setModalMode] = useState(null);
+	const [activeBook, setActiveBook] = useState(null);
+
 	const modal = useSelector(({ modal }) => modal.visibleModal);
-	const book = useSelector(({ book }) => book.book);
+	const books = useSelector(({ book }) => book.book);
 	const dispatch = useDispatch();
+
+	const addBook = () => {
+		dispatch(showModalAction());
+		setModalMode('add');
+	}
+
+	const editBook = (book) => {
+		dispatch(showModalAction());
+		setModalMode('edit');
+		setActiveBook(book);
+	}
 
 	return (
 		<div className='app'>
 			<div className='header'>
 				<div className='header__title'>Список книг</div>
-				<button className='header__button' onClick={() => dispatch(showModalAction())}>Добавить</button>
+				<button className='header__button' onClick={addBook}>Добавить</button>
 			</div>
 			<div className='list'>
 				<div className='list__title'>
@@ -22,13 +36,13 @@ const App = () => {
 					<div>Оценка</div>
 				</div>
 				<div className='list__books'>
-						{book.map(b => {
+						{books.map(book => {
 							return (
-								<Book key={b.id} b={b}/>
+								<Book onClickEdit={editBook} key={book.id} book={book} />
 							)
 						})}
 				</div>
-				{modal && <Modal />}
+				{modal && <Modal mode={modalMode} book={activeBook} />}
 			</div>
 		</div>
 	)
