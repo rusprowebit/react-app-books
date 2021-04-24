@@ -23,11 +23,12 @@ const App = () => {
 		setActiveBook(book);
 	}
 
+
 	return (
 		<div className='app'>
 			<div className='header'>
 				<div className='header__title'>Список книг</div>
-				<button className='header__button' onClick={addBook}>Добавитьfsdfsdf</button>
+				<button className='header__button' onClick={addBook}>Добавить</button>
 			</div>
 			<div className='list'>
 				<div className='list__title'>

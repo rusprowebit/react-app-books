@@ -11,6 +11,10 @@ export const Modal = ({ mode, book }) => {
 	const [countInput, setCountInput] = useState('');
 	const [ratingInput, setRatingInput] = useState('');
 
+	const [editTitleInput, setEditTitleInput] = useState( mode === 'edit' ? book.title : null);
+	const [editCountInput, setEditCountInput] = useState( mode === 'edit' ? book.count : null);
+	const [editRatingInput, setEditRatingInput] = useState( mode === 'edit' ? book.rating : null);
+
 	const [titleError, setTitleError] = useState(false);
 	const [countError, setCountError] = useState(false);
 	const [ratingError, setRatingError] = useState(false);
@@ -40,7 +44,7 @@ export const Modal = ({ mode, book }) => {
 
 	const editBook = (e) => {
 		e.preventDefault();
-		dispatch(editBookAction(titleInput.toUpperCase(), countInput, ratingInput, book));
+		dispatch(editBookAction(editTitleInput.toUpperCase(), editCountInput, editRatingInput, book));
 		dispatch(hideModalAction());
 	}
 
@@ -53,8 +57,8 @@ export const Modal = ({ mode, book }) => {
 					<input 
 						className={titleError ? 'input-error' : null}
 						name='title'
-						value={titleInput} 
-						onChange={ e => setTitleInput(e.target.value) } 
+						value={ mode === 'add' ? titleInput : editTitleInput} 
+						onChange={ e => mode === 'add' ? setTitleInput(e.target.value) : setEditTitleInput(e.target.value) } 
 						type="text" 
 						placeholder='Введите название вашей книги'
 					/>
@@ -64,8 +68,8 @@ export const Modal = ({ mode, book }) => {
 					<input 
 						className={countError ? 'input-error' : null}
 						name='count'
-						value={countInput} 
-						onChange={ e => setCountInput(e.target.value) } 
+						value={ mode === 'add' ? countInput : editCountInput} 
+						onChange={ e =>  mode === 'add' ? setCountInput(e.target.value) : setEditCountInput(e.target.value) } 
 						type="text" 
 						placeholder='Кол-во страниц'
 					/>
@@ -75,8 +79,8 @@ export const Modal = ({ mode, book }) => {
 					<input 
 						className={ratingError ? 'input-error' : null}
 						name='rating'
-						value={ratingInput} 
-						onChange={ e => setRatingInput(e.target.value) } 
+						value={ mode === 'add' ? ratingInput : editRatingInput} 
+						onChange={ e => mode === 'add' ? setRatingInput(e.target.value) : setEditRatingInput(e.target.value) } 
 						type="text" 
 						placeholder='Поставьте оценку'
 					/>
