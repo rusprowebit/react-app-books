@@ -70,3 +70,39 @@ code {
 	background-color: rgba(248, 219, 52, 1);
 }
 
+.note-exit-active {
+	animation: note 800ms linear forwards;
+}
+
+.note-enter-active {
+	animation: noteAdd 1.2s linear ;
+}
+
+@keyframes note {
+	0% {
+		transform: translateX(0);
+	}
+	50% {
+		opacity: 0.7;
+		transform: translateX(30px);
+	}
+	100% {
+		opacity: 0;
+		transform: translateX(-200px);
+	}
+}
+
+@keyframes noteAdd {
+	0% {
+		opacity: 0;
+		transform: translateX(-200px);
+	}
+	70% {
+		opacity: 0.5;
+		transform: translateX(20px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}

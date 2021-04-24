@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { hideModalAction } from '../../redux/reducers/modalReducer';
 import { addBookAction, editBookAction } from '../../redux/reducers/bookReducer';
 import './modal.css';
+import { Alert } from '../alert/Alert';
 
 export const Modal = ({ mode, book }) => {
 	const dispatch = useDispatch();
@@ -10,6 +11,8 @@ export const Modal = ({ mode, book }) => {
 	const [titleInput, setTitleInput] = useState('');
 	const [countInput, setCountInput] = useState('');
 	const [ratingInput, setRatingInput] = useState('');
+
+	const [visibleAlert, setVisibleAlert] = useState(false);
 
 	const [editTitleInput, setEditTitleInput] = useState( mode === 'edit' ? book.title : null);
 	const [editCountInput, setEditCountInput] = useState( mode === 'edit' ? book.count : null);
@@ -29,12 +32,15 @@ export const Modal = ({ mode, book }) => {
 		e.preventDefault();
 		if(titleInput.trim().length < 1) {
 			setTitleError(true);
+			setVisibleAlert(true);
 			return
 		} else if(countInput.trim().length < 1) {
 			setCountError(true);
+			setVisibleAlert(true);
 			return
 		} else if(ratingInput.trim().length < 1) {
 			setRatingError(true);
+			setVisibleAlert(true);
 			return
 		}
 		dispatch(addBookAction(titleInput.toUpperCase(), countInput, ratingInput));
@@ -44,12 +50,26 @@ export const Modal = ({ mode, book }) => {
 
 	const editBook = (e) => {
 		e.preventDefault();
+		if(editTitleInput.trim().length < 1) {
+			setTitleError(true);
+			setVisibleAlert(true);
+			return
+		} else if(editCountInput.trim().length < 1) {
+			setCountError(true);
+			setVisibleAlert(true);
+			return
+		} else if(editRatingInput.trim().length < 1) {
+			setRatingError(true);
+			setVisibleAlert(true);
+			return
+		}
 		dispatch(editBookAction(editTitleInput.toUpperCase(), editCountInput, editRatingInput, book));
 		dispatch(hideModalAction());
 	}
 
 	return (
 		<div className='modal' onClick={ () => dispatch(hideModalAction()) }>
+			{visibleAlert && <Alert />}
 			<form className='modal__content' onClick={ e => e.stopPropagation() }>
 				<h1>{mode === 'add' ? 'Добавление книги' : 'Редактирование книги'}</h1>
 				<div className='modal__title'>

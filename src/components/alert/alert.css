@@ -1,0 +1,38 @@
+.alert__wrapper {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	top: 100px;
+	left: 50%;
+	transform: translateX(-50%);
+	min-width: 300px;
+	background-color: rgb(238, 139, 139);
+	border-radius: 10px;
+	border-radius: 20px;
+	padding: 20px;
+}
+.alert__content {
+	font-size: 22px;
+}
+.alert__close {
+	position: absolute;
+	font-size: 40px;
+	top: -10px;
+	right: -20px;
+	background-color: transparent;
+	color: rgba(248, 219, 52, 1);
+}
+
+.alert__wrapper-enter {
+	opacity: 0;
+}
+.alert__wrapper-enter-active {
+	transition: 2s ease-out;
+	opacity: 1;
+}
+
+.alert__wrapper-exit-active {
+	transition: 2s ease-out;
+	opacity: 0;
+}

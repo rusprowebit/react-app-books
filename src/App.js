@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Book } from './components/book/Book';
 import { Modal } from './components/modal/Modal'
 import { showModalAction } from './redux/reducers/modalReducer';
+import { TransitionGroup, CSSTransition} from 'react-transition-group';
 
 const App = () => {
 	const [modalMode, setModalMode] = useState(null);
@@ -36,13 +37,15 @@ const App = () => {
 					<div>Кол-во страниц</div>
 					<div>Оценка</div>
 				</div>
-				<div className='list__books'>
+				<TransitionGroup component='div' className='list__books'>
 						{books.map(book => {
 							return (
-								<Book onClickEdit={editBook} key={book.id} book={book} />
+								<CSSTransition key={book.id} classNames={'note'} timeout={1500}>
+									<Book onClickEdit={editBook} book={book} />
+								</CSSTransition>
 							)
 						})}
-				</div>
+				</TransitionGroup>
 				{modal && <Modal mode={modalMode} book={activeBook} />}
 			</div>
 		</div>
