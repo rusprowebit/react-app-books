@@ -69,7 +69,7 @@ export const Modal = ({ mode, book }) => {
 
 	return (
 		<div className='modal' onClick={ () => dispatch(hideModalAction()) }>
-			{visibleAlert && <Alert />}
+			{/* {visibleAlert && <Alert />} */}
 			<form className='modal__content' onClick={ e => e.stopPropagation() }>
 				<h1>{mode === 'add' ? 'Добавление книги' : 'Редактирование книги'}</h1>
 				<div className='modal__title'>
